@@ -1,0 +1,28 @@
+name: pet_social
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  mask_text_input_formatter: ^2.5.0
+  flutter_masked_text2: ^0.9.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  assets:
+    - assets/image/petsocial.png
+    - assets/image/ilusta.png
+
