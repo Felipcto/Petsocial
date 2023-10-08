@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'cadastro.dart'; // Importando o arquivo da tela de cadastro
+import 'cadastro.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,44 +14,80 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class TelaInicial extends StatelessWidget {
+class TelaInicial extends StatefulWidget {
+  @override
+  _TelaInicialState createState() => _TelaInicialState();
+}
+
+class _TelaInicialState extends State<TelaInicial> {
+  bool isLoginPressed = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xFF8CD8FF),
         elevation: 0,
-        title: Image.asset('assets/image/petsocial.png', fit: BoxFit.cover),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/image/ilusta.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 50.0), // Espaçamento na parte superior do Column
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end, // Alinha o Column na parte inferior
-              crossAxisAlignment: CrossAxisAlignment.center, // Centraliza os elementos horizontalmente
-              children: [
-                Text('Bem-vindo ao PetSocial!'),
-                SizedBox(height: 20), // Espaçamento entre o texto e o botão
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Cadastro()),
-                    );
-                  },
-                  child: Text('Ir para Cadastro'),
-                ),
-              ],
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/image/ilusta.png'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Cadastro()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                ),
+                child: Text(
+                  'CADASTRE-SE',
+                  style: TextStyle(
+                    color: Color(0xFF0B98FB),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  decoration: BoxDecoration(
+                    color: isLoginPressed
+                        ? Color(0xFFCDEEFF)
+                        : Colors.transparent,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'LOGIN',
+                      style: TextStyle(
+                        color: isLoginPressed
+                            ? Colors.white
+                            : Color(0xFFCDEEFF),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 28),
+            ],
+          ),
+        ],
       ),
     );
   }
